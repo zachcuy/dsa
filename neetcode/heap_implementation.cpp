@@ -1,5 +1,11 @@
 #include "includes.h"
 
+/*
+
+Study of HEAP data structure
+
+*/
+
 struct Heap
 {
     // MIN HEAP IMPLEMENTATION
@@ -41,7 +47,11 @@ struct Heap
     void pop()
     {
         /*
-        get the first (smallest value) value, return it, and delete the value
+        Move last value in vector to the top and replace the last value
+        Make sure to delete the last node
+
+        Percolate downwards by replacing the first value with its min(children)
+        Keep doing this as long as the children are available
         */
     }
 
@@ -54,6 +64,7 @@ struct Heap
         std::cout << "\n";
     }
 
+    // Base data structure is a vector
     std::vector<int> heap{0};
 };
 
