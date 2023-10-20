@@ -1,0 +1,10 @@
+[123, 4, 5] = 123 0004 0005
+
+The big values won't fit inside of an integer
+
+If a lower base value is calculated as 
+
+
+
+
+

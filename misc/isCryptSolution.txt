@@ -1,0 +1,8 @@
+["TEN", "TWO", "ONE"]
+
+ten = 054
+two = 091
+one = 145
+
+actual:
+54 + 91 = 145

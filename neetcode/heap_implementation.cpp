@@ -53,7 +53,9 @@ struct Heap
         Percolate downwards by replacing the first value with its min(children)
         Keep doing this as long as the children are available
         */
-    }
+
+        // get last idx
+        }
 
     void print()
     {
@@ -70,6 +72,7 @@ struct Heap
 
 int main()
 {
+    std::cout << "hello!\n";
     Heap myHeap;
 
     std::vector<int> vals{14, 19, 16, 21, 26, 19, 68, 65, 30};
