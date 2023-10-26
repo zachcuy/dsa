@@ -124,6 +124,10 @@ struct Heap
     std::vector<int> heap{0};
 };
 
+void heapify(std::vector<int> vec)
+{
+}
+
 int main()
 {
     Heap myHeap;
