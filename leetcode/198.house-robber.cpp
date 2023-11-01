@@ -59,6 +59,9 @@ Can't rob adjacent houses so we always have to skip between houses
 
 might need to skip two houses so we can rob better ones
 
+1 2 3 1
+best is 1 + 3 = 4
+
 2 7 9 3 1
 best is 2 + 9 + 1 = 12
 
@@ -76,6 +79,32 @@ class Solution
 public:
     int rob(std::vector<int> &nums)
     {
+        int n = nums.size();
+        std::vector<int> v(n, 0);
+
+        if (n == 1)
+        {
+            return nums[0];
+        }
+
+        // need to keep track of two values,
+        v[0] = nums[0];
+        v[1] = nums[1];
+
+        // dp loop (pushing)
+        for (int i = 2; i < n; ++i)
+        {
+            if (i == 2)
+            {
+                v[i] = v[i - 2] + nums[i];
+            }
+            else
+            {
+                v[i] = std::max(v[i - 2], v[i - 3]) + nums[i];
+            }
+        }
+
+        return std::max(v[n - 1], v[n - 2]);
     }
 };
 // @lc code=end
@@ -83,8 +112,9 @@ public:
 int main()
 {
     // tests
-    std::vector<int> v1{1, 2, 3, 1};
-    std::vector<int> v2{2, 7, 9, 3, 1};
+    std::vector<int> v1{1, 2, 3, 1};    // 4
+    std::vector<int> v2{2, 7, 9, 3, 1}; // 12
+    std::vector<int> v3{0, 3, 2, 4};    // 4
 
     Solution obj;
     int out = obj.rob(v1);
