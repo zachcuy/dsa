@@ -77,7 +77,44 @@ this is a DP problem
 class Solution
 {
 public:
-    int rob(std::vector<int> &nums)
+    // Recursive version
+    int rob_helper(int n, std::vector<int> &v, std::vector<int> &nums)
+    {
+        int profit = 0;
+
+        // base case
+        if (n == 0)
+        {
+            return nums[0];
+        }
+
+        // check if we're out of bounds
+        if (n < 0)
+        {
+            return 0;
+        }
+
+        // memo
+        if (v[n] > 0)
+        {
+            return v[n];
+        }
+
+        v[n] = nums[n] + std::max(rob_helper(n - 2, v, nums), rob_helper(n - 3, v, nums));
+
+        return v[n];
+    }
+
+    int rob_recursion(std::vector<int> &nums)
+    {
+        int n = nums.size();      // 5
+        std::vector<int> v(n, 0); // 6 [0 1 2 3 4 5]
+
+        return rob_helper(n - 1, v, nums);
+    }
+
+    // AC
+    int rob_iterative(std::vector<int> &nums)
     {
         int n = nums.size();
         std::vector<int> v(n, 0);
@@ -106,6 +143,11 @@ public:
 
         return std::max(v[n - 1], v[n - 2]);
     }
+    int rob(std::vector<int> &nums)
+    {
+        // return rob_recursion(nums);
+        return rob_iterative(nums);
+    }
 };
 // @lc code=end
 
@@ -114,11 +156,13 @@ int main()
     // tests
     std::vector<int> v1{1, 2, 3, 1};    // 4
     std::vector<int> v2{2, 7, 9, 3, 1}; // 12
-    std::vector<int> v3{0, 3, 2, 4};    // 4
 
     Solution obj;
-    int out = obj.rob(v1);
-    std::cout << out << "\n\n";
+    // int out = obj.rob(v2);
+    int out_recursion = obj.rob_recursion(v1);
+    std::cout << "\n\n\n\n";
+    // std::cout << "Iter: " << out << "\n";
+    std::cout << "Recu: " << out_recursion << "\n\n";
 
     return 0;
 }
