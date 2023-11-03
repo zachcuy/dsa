@@ -98,36 +98,23 @@ public:
             return true;
         }
 
-        std::unordered_set<int> visited;
-        std::stack<int> stack;
-        stack.push(0);
+        int maxDistance = 0;
+        int i = 0;
 
-        while (stack.size())
+        while (i <= maxDistance)
         {
-            int idx = stack.top();
-            int num = nums[idx];
-            stack.pop();
-
-            if (!visited.count(idx))
+            if (nums[i] + i > maxDistance)
             {
-                // add to visited
-                visited.insert(idx);
-
-                if (idx == nums.size() - 1)
-                {
-                    return true;
-                }
-
-                // add next indices to q
-                for (int i = 1; i <= num; ++i)
-                {
-                    // make sure we're not going out of bounds
-                    if (idx + i < nums.size() and !visited.count(idx + i))
-                    {
-                        stack.push(idx + i);
-                    }
-                }
+                // update max distance
+                maxDistance = nums[i] + i;
             }
+
+            if (maxDistance >= nums.size() - 1)
+            {
+                return true;
+            }
+
+            i++;
         }
 
         return false;
