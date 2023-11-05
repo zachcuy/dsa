@@ -11,13 +11,6 @@
                 "-o",
                 "${workspaceFolder}/out/${fileBasenameNoExtension}",
                 "-I${workspaceFolder}/headers",
-                "-Wall",
-                "-Wextra",
-                "-Wconversion",
-                "-Wsign-conversion",
-                "-Wshadow",
-                "-Wpedantic",
-                "-D__USE_MINGW_ANSI_STDIO=1"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
