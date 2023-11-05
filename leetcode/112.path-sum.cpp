@@ -81,22 +81,20 @@ class Solution
 public:
     bool hasPathSum(TreeNode *root, int targetSum)
     {
+        // null node
         if (!root)
         {
             return false;
         }
 
-        // update sum
-        targetSum -= root->val;
-
         // check if it's a leaf node (no children)
         if (!root->left and !root->right)
         {
-            return (targetSum == 0);
+            return (targetSum == root->val);
         }
 
         // dfs
-        return hasPathSum(root->left, targetSum) or hasPathSum(root->right, targetSum);
+        return hasPathSum(root->left, targetSum - root->val) or hasPathSum(root->right, targetSum - root->val);
     }
 };
 // @lc code=end
