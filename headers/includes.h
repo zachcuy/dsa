@@ -2,12 +2,12 @@
 #define __INCLUDES_H__
 
 // STL
+#include <algorithm>
 #include <iostream>
 #include <string>
-#include <vector>
 #include <unordered_map>
 #include <unordered_set>
-#include <algorithm>
+#include <vector>
 
 // CP MACROS
 #include <bits/stdc++.h>
@@ -21,8 +21,7 @@ typedef long long ll;
 // vector print
 void vecPrint(std::vector<int> &v)
 {
-    for (auto &el : v)
-    {
+    for (auto &el : v) {
         std::cout << el << " ";
     }
     std::cout << "\n";
@@ -30,43 +29,41 @@ void vecPrint(std::vector<int> &v)
 
 // LEETCODE BINTREE
 // Definition for a bin tree
-struct TreeNode
-{
+struct TreeNode {
     int val;
     TreeNode *left;
     TreeNode *right;
     TreeNode() : val(0), left(nullptr), right(nullptr) {}
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right)
+        : val(x), left(left), right(right)
+    {
+    }
 };
 
-// usage: TreeNode* root = build("[7,1,4,6,null,5,3,null,null,null,null,null,2]");
+// usage: TreeNode* root =
+// build("[7,1,4,6,null,5,3,null,null,null,null,null,2]");
 TreeNode *build(string serialized)
 {
     serialized = serialized.substr(1, serialized.size() - 2);
     istringstream iss(serialized);
     string s;
     vector<int> nums;
-    while (getline(iss, s, ','))
-        nums.push_back(s == "null" ? -1 : stoi(s));
-    if (nums.empty())
-        return nullptr;
+    while (getline(iss, s, ',')) nums.push_back(s == "null" ? -1 : stoi(s));
+    if (nums.empty()) return nullptr;
     TreeNode *root = new TreeNode(nums[0]);
     queue<TreeNode *> q;
     q.push(root);
     int i = 0;
     int n = nums.size();
-    while (!q.empty())
-    {
+    while (!q.empty()) {
         auto cur = q.front();
         q.pop();
-        if (++i < n && nums[i] != -1)
-        {
+        if (++i < n && nums[i] != -1) {
             cur->left = new TreeNode(nums[i]);
             q.push(cur->left);
         }
-        if (++i < n && nums[i] != -1)
-        {
+        if (++i < n && nums[i] != -1) {
             cur->right = new TreeNode(nums[i]);
             q.push(cur->right);
         }
@@ -75,8 +72,7 @@ TreeNode *build(string serialized)
 }
 
 // LEETCODE LIST
-struct ListNode
-{
+struct ListNode {
     int val;
     ListNode *next;
     ListNode() : val(0), next(nullptr) {}
@@ -91,14 +87,11 @@ ListNode *populate(string serialized)
     istringstream iss(serialized);
     string s;
     vector<int> nums;
-    while (getline(iss, s, ','))
-        nums.push_back(s == "null" ? -1 : stoi(s));
-    if (nums.empty())
-        return nullptr;
+    while (getline(iss, s, ',')) nums.push_back(s == "null" ? -1 : stoi(s));
+    if (nums.empty()) return nullptr;
     ListNode *root = new ListNode(nums[0]);
     ListNode *cur = root;
-    for (int i = 1; i < nums.size(); ++i)
-    {
+    for (int i = 1; i < nums.size(); ++i) {
         cur->next = new ListNode(nums[i]);
         cur = cur->next;
     }
@@ -107,12 +100,11 @@ ListNode *populate(string serialized)
 
 void listPrint(ListNode *head)
 {
-    while (head)
-    {
+    while (head) {
         std::cout << head->val << " ";
         head = head->next;
     }
     std::cout << "\n\n";
 }
 
-#endif // __INCLUDES_H__
+#endif  // __INCLUDES_H__

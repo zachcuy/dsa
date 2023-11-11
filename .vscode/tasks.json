@@ -10,7 +10,11 @@
                 "${file}",
                 "-o",
                 "${workspaceFolder}/out/${fileBasenameNoExtension}",
+                "-lsfml-graphics",
+                "-lsfml-window",
+                "-lsfml-system",
                 "-I${workspaceFolder}/headers",
+                "-I/usr/include",
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
