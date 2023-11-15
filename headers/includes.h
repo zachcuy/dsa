@@ -46,7 +46,8 @@ void vecPrint2D(std::vector<std::vector<int>> &v)
 }
 
 // key:value pair print
-void mapPrint(std::unordered_map<int, int> &m)
+template <typename A, typename B>
+void mapPrint(std::unordered_map<A, B> &m)
 {
     for (auto &e : m)
     {
