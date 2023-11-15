@@ -76,7 +76,7 @@ TreeNode *build(string serialized)
     istringstream iss(serialized);
     string s;
     vector<int> nums;
-    while (getline(iss, s, ',')) nums.push_back(s == "null" ? -1 : stoi(s));
+    while (getline(iss, s, ',')) nums.push_back(s == "null" ? -INT_MAX : stoi(s));
     if (nums.empty()) return nullptr;
     TreeNode *root = new TreeNode(nums[0]);
     queue<TreeNode *> q;
@@ -87,12 +87,12 @@ TreeNode *build(string serialized)
     {
         auto cur = q.front();
         q.pop();
-        if (++i < n && nums[i] != -1)
+        if (++i < n && nums[i] != -INT_MAX)
         {
             cur->left = new TreeNode(nums[i]);
             q.push(cur->left);
         }
-        if (++i < n && nums[i] != -1)
+        if (++i < n && nums[i] != -INT_MAX)
         {
             cur->right = new TreeNode(nums[i]);
             q.push(cur->right);
