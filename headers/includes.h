@@ -18,27 +18,53 @@ typedef long long ll;
 #define REP(i, n) FOR(i, 0, n)
 #define LSOne(S) ((S) & -(S))
 
-// vector print
+// bool print
+void boolPrint(bool x) { cout << (x ? "True" : "False") << "\n"; }
+
+// 1D vector print
 void vecPrint(std::vector<int> &v)
 {
-    for (auto &el : v) {
+    for (auto &el : v)
+    {
         std::cout << el << " ";
+    }
+    std::cout << "\n";
+}
+
+// 2D vector print
+void vecPrint2D(std::vector<std::vector<int>> &v)
+{
+    for (auto &row : v)
+    {
+        for (auto &cell : row)
+        {
+            std::cout << cell << "\t";
+        }
+        std::cout << "\n";
+    }
+    std::cout << "\n";
+}
+
+// key:value pair print
+void mapPrint(std::unordered_map<int, int> &m)
+{
+    for (auto &e : m)
+    {
+        std::cout << e.first << " " << e.second << "\n";
     }
     std::cout << "\n";
 }
 
 // LEETCODE BINTREE
 // Definition for a bin tree
-struct TreeNode {
+struct TreeNode
+{
     int val;
     TreeNode *left;
     TreeNode *right;
     TreeNode() : val(0), left(nullptr), right(nullptr) {}
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right)
-        : val(x), left(left), right(right)
-    {
-    }
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
 // usage: TreeNode* root =
@@ -56,14 +82,17 @@ TreeNode *build(string serialized)
     q.push(root);
     int i = 0;
     int n = nums.size();
-    while (!q.empty()) {
+    while (!q.empty())
+    {
         auto cur = q.front();
         q.pop();
-        if (++i < n && nums[i] != -1) {
+        if (++i < n && nums[i] != -1)
+        {
             cur->left = new TreeNode(nums[i]);
             q.push(cur->left);
         }
-        if (++i < n && nums[i] != -1) {
+        if (++i < n && nums[i] != -1)
+        {
             cur->right = new TreeNode(nums[i]);
             q.push(cur->right);
         }
@@ -72,7 +101,8 @@ TreeNode *build(string serialized)
 }
 
 // LEETCODE LIST
-struct ListNode {
+struct ListNode
+{
     int val;
     ListNode *next;
     ListNode() : val(0), next(nullptr) {}
@@ -91,16 +121,19 @@ ListNode *populate(string serialized)
     if (nums.empty()) return nullptr;
     ListNode *root = new ListNode(nums[0]);
     ListNode *cur = root;
-    for (int i = 1; i < nums.size(); ++i) {
+    for (int i = 1; i < nums.size(); ++i)
+    {
         cur->next = new ListNode(nums[i]);
         cur = cur->next;
     }
     return root;
 }
 
+// linked list print
 void listPrint(ListNode *head)
 {
-    while (head) {
+    while (head)
+    {
         std::cout << head->val << " ";
         head = head->next;
     }
