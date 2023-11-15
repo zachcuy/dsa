@@ -61,7 +61,7 @@ we find the greatest sum, we can use kadane's algo for that with a specified len
 // @lc code=start
 class Solution
 {
-public:
+   public:
     double findMaxAverage(vector<int> &nums, int k)
     {
         // calculate the length of
@@ -93,7 +93,6 @@ public:
 
 int main()
 {
-
     Solution obj;
 
     // test 1
