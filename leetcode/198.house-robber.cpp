@@ -74,79 +74,44 @@ this is a DP problem
 
 #include "includes.h"
 // @lc code=start
-class Solution
-{
-public:
-    // Recursive version
-    int rob_helper(int n, std::vector<int> &v, std::vector<int> &nums)
-    {
-        int profit = 0;
+class Solution {
+   public:
+    // // AC
+    // int rob_iterative(std::vector<int> &nums)
+    // {
+    //     int n = nums.size();
+    //     std::vector<int> v(n, 0);
 
-        // base case
-        if (n == 0)
-        {
-            return nums[0];
-        }
+    //     if (n == 1) {
+    //         return nums[0];
+    //     }
 
-        // check if we're out of bounds
-        if (n < 0)
-        {
-            return 0;
-        }
+    //     // need to keep track of two values,
+    //     v[0] = nums[0];
+    //     v[1] = nums[1];
 
-        // memo
-        if (v[n] > 0)
-        {
-            return v[n];
-        }
+    //     // dp loop (pushing)
+    //     for (int i = 2; i < n; ++i) {
+    //         if (i == 2) {
+    //             v[i] = v[i - 2] + nums[i];
+    //         }
+    //         else {
+    //             v[i] = std::max(v[i - 2], v[i - 3]) + nums[i];
+    //         }
+    //     }
 
-        v[n] = nums[n] + std::max(rob_helper(n - 2, v, nums), rob_helper(n - 3, v, nums));
-
-        return v[n];
-    }
-
-    int rob_recursion(std::vector<int> &nums)
-    {
-        int n = nums.size();      // 5
-        std::vector<int> v(n, 0); // 6 [0 1 2 3 4 5]
-
-        return rob_helper(n - 1, v, nums);
-    }
-
-    // AC
-    int rob_iterative(std::vector<int> &nums)
-    {
-        int n = nums.size();
-        std::vector<int> v(n, 0);
-
-        if (n == 1)
-        {
-            return nums[0];
-        }
-
-        // need to keep track of two values,
-        v[0] = nums[0];
-        v[1] = nums[1];
-
-        // dp loop (pushing)
-        for (int i = 2; i < n; ++i)
-        {
-            if (i == 2)
-            {
-                v[i] = v[i - 2] + nums[i];
-            }
-            else
-            {
-                v[i] = std::max(v[i - 2], v[i - 3]) + nums[i];
-            }
-        }
-
-        return std::max(v[n - 1], v[n - 2]);
-    }
+    //     return std::max(v[n - 1], v[n - 2]);
+    // }
+    // // AC
     int rob(std::vector<int> &nums)
     {
-        // return rob_recursion(nums);
-        return rob_iterative(nums);
+        nums.push_back(0);
+
+        for (int i = nums.size() - 4; i >= 0; --i) {
+            nums[i] += std::max(nums[i + 3], nums[i + 2]);
+        }
+
+        return std::max(nums[0], nums[1]);
     }
 };
 // @lc code=end
@@ -154,15 +119,13 @@ public:
 int main()
 {
     // tests
-    std::vector<int> v1{1, 2, 3, 1};    // 4
-    std::vector<int> v2{2, 7, 9, 3, 1}; // 12
+    std::vector<int> v1{1, 2, 3, 1};     // 4
+    std::vector<int> v2{2, 7, 9, 3, 1};  // 12
 
     Solution obj;
-    // int out = obj.rob(v2);
-    int out_recursion = obj.rob_recursion(v1);
-    std::cout << "\n\n\n\n";
-    // std::cout << "Iter: " << out << "\n";
-    std::cout << "Recu: " << out_recursion << "\n\n";
+
+    std::cout << obj.rob(v1) << "\n";
+    std::cout << obj.rob(v2) << "\n";
 
     return 0;
 }
