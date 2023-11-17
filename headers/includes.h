@@ -32,17 +32,20 @@ void vecPrint(std::vector<int> &v)
 }
 
 // 2D vector print
-void vecPrint2D(std::vector<std::vector<int>> &v)
+template <typename T>
+void vecPrint2D(std::vector<std::vector<T>> v)
 {
-    for (auto &row : v)
+    std::cout << "[ ";
+    for (size_t i = 0; i < v.size(); i++)
     {
-        for (auto &cell : row)
+        std::cout << "[ ";
+        for (size_t j = 0; j < v[i].size(); j++)
         {
-            std::cout << cell << "\t";
+            std::cout << v[i][j] << " ";
         }
-        std::cout << "\n";
+        std::cout << "] ";
     }
-    std::cout << "\n";
+    std::cout << "]\n";
 }
 
 // key:value pair print
