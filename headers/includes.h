@@ -18,11 +18,20 @@ typedef long long ll;
 #define REP(i, n) FOR(i, 0, n)
 #define LSOne(S) ((S) & -(S))
 
+void borderPrint()
+{
+    cout << "#################################\n";
+}
+
 // bool print
-void boolPrint(bool x) { cout << (x ? "True" : "False") << "\n"; }
+void boolPrint(bool x)
+{
+    cout << (x ? "True" : "False") << "\n";
+}
 
 // 1D vector print
-void vecPrint(std::vector<int> &v)
+template <typename T>
+void vecPrint(std::vector<T> &v)
 {
     for (auto &el : v)
     {
@@ -35,7 +44,7 @@ void vecPrint(std::vector<int> &v)
 template <typename T>
 void vecPrint2D(std::vector<std::vector<T>> v)
 {
-    std::cout << "[ ";
+    std::cout << "[\n";
     for (size_t i = 0; i < v.size(); i++)
     {
         std::cout << "[ ";
@@ -43,7 +52,7 @@ void vecPrint2D(std::vector<std::vector<T>> v)
         {
             std::cout << v[i][j] << " ";
         }
-        std::cout << "] ";
+        std::cout << "]\n";
     }
     std::cout << "]\n";
 }
@@ -66,9 +75,15 @@ struct TreeNode
     int val;
     TreeNode *left;
     TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+    TreeNode() : val(0), left(nullptr), right(nullptr)
+    {
+    }
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr)
+    {
+    }
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right)
+    {
+    }
 };
 
 // usage: TreeNode* root =
@@ -109,9 +124,15 @@ struct ListNode
 {
     int val;
     ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+    ListNode() : val(0), next(nullptr)
+    {
+    }
+    ListNode(int x) : val(x), next(nullptr)
+    {
+    }
+    ListNode(int x, ListNode *next) : val(x), next(next)
+    {
+    }
 };
 
 // ListNode* root = populate("[7,1,4,6,null,5,3,null,null,null,null,null,2]");

@@ -90,31 +90,55 @@ also uses a lot of space (~5% space complexity)
 // @lc code=start
 class Solution
 {
-public:
-    bool canJump(vector<int> &nums)
+   public:
+    // AC
+    // bool canJump(vector<int> &nums)
+    // {
+    //     if (nums.size() == 1)
+    //     {
+    //         return true;
+    //     }
+
+    //     int maxDistance = 0;
+    //     int i = 0;
+
+    //     while (i <= maxDistance)
+    //     {
+    //         if (nums[i] + i > maxDistance)
+    //         {
+    //             // update max distance
+    //             maxDistance = nums[i] + i;
+    //         }
+
+    //         if (maxDistance >= nums.size() - 1)
+    //         {
+    //             return true;
+    //         }
+
+    //         i++;
+    //     }
+
+    //     return false;
+    // }
+
+    // AC (revisited)
+    bool canJump(vector<int>& nums)
     {
-        if (nums.size() == 1)
-        {
-            return true;
-        }
-
+        // at each point, we can reach i + nums[i], so we need to see if we can reach the end or not
         int maxDistance = 0;
-        int i = 0;
 
-        while (i <= maxDistance)
+        for (int i = 0; i < nums.size(); ++i)
         {
-            if (nums[i] + i > maxDistance)
+            if (i > maxDistance)
             {
-                // update max distance
-                maxDistance = nums[i] + i;
+                return false;
             }
+            maxDistance = max(maxDistance, nums[i] + i);
 
             if (maxDistance >= nums.size() - 1)
             {
                 return true;
             }
-
-            i++;
         }
 
         return false;
@@ -125,9 +149,11 @@ public:
 int main()
 {
     std::vector<int> nums{2, 3, 1, 1, 4};
+    std::vector<int> nums2{3, 2, 1, 0, 4};
 
     Solution obj;
     std::cout << obj.canJump(nums) << "\n\n";
+    std::cout << obj.canJump(nums2) << "\n\n";
 
     return 0;
 }

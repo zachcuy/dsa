@@ -74,7 +74,8 @@ this is a DP problem
 
 #include "includes.h"
 // @lc code=start
-class Solution {
+class Solution
+{
    public:
     // // AC
     // int rob_iterative(std::vector<int> &nums)
@@ -102,16 +103,31 @@ class Solution {
 
     //     return std::max(v[n - 1], v[n - 2]);
     // }
-    // // AC
-    int rob(std::vector<int> &nums)
-    {
-        nums.push_back(0);
 
-        for (int i = nums.size() - 4; i >= 0; --i) {
-            nums[i] += std::max(nums[i + 3], nums[i + 2]);
+    int rob(vector<int>& v)
+    {
+        if (v.size() <= 1)
+        {
+            return v[0];
         }
 
-        return std::max(nums[0], nums[1]);
+        vector<int> dp(v.size() + 1, 0);
+        dp[0] = v[0];
+        dp[1] = v[1];
+
+        for (int i = 2; i < v.size(); ++i)
+        {
+            if (i == 2)
+            {
+                dp[i] = v[i] + v[0];
+            }
+            else
+            {
+                dp[i] = v[i] + max(dp[i - 2], dp[i - 3]);
+            }
+        }
+
+        return max(dp[v.size() - 1], dp[v.size() - 2]);
     }
 };
 // @lc code=end

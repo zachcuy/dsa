@@ -59,7 +59,7 @@
 // @lc code=start
 class Solution
 {
-public:
+   public:
     /*
     two pointers, specifically sliding window would be good for this
     since we want the largest subarray, we can keep expanding the sliding window
@@ -102,9 +102,9 @@ public:
 int main()
 {
     // test cases
-    std::vector<int> v1{-2, 1, -3, 4, -1, 2, 1, -5, 4}; // res: 6
-    std::vector<int> v2{1};                             // res: 1
-    std::vector<int> v3{5, 4, -1, 7, 8};                // res: 23
+    std::vector<int> v1{-2, 1, -3, 4, -1, 2, 1, -5, 4};  // res: 6
+    std::vector<int> v2{1};                              // res: 1
+    std::vector<int> v3{5, 4, -1, 7, 8};                 // res: 23
 
     // call solution
     Solution obj;

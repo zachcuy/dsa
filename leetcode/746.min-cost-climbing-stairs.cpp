@@ -59,7 +59,8 @@
 
 #include "includes.h"
 // @lc code=start
-class Solution {
+class Solution
+{
    public:
     // recursion AC
     // int count(std::vector<int>& cost, int n, std::unordered_map<int, int>& m)
@@ -83,26 +84,48 @@ class Solution {
     // }
 
     // Iterative
+    // int minCostClimbingStairs(vector<int>& cost)
+    // {
+    //     /*
+
+    //     starting from the bottom, we can calculate the cost at our current step
+    //     + the minimum between the next two steps
+
+    //     */
+
+    //     std::vector<int> v(cost.size() + 1, 0);
+    //     for (int i = 0; i < cost.size(); ++i) {
+    //         if (i <= 1) {
+    //             v[i] = cost[i];
+    //         }
+    //         else {
+    //             v[i] = cost[i] + std::min(v[i - 1], v[i - 2]);
+    //         }
+    //     }
+
+    //     return std::min(v[cost.size() - 1], v[cost.size() - 2]);
+    // }
+
+    // revisited (nov 20, 2023)
     int minCostClimbingStairs(vector<int>& cost)
     {
-        /*
+        // can start on i = 0 or i = 1
 
-        starting from the bottom, we can calculate the cost at our current step
-        + the minimum between the next two steps
+        vector<int> dp(cost.size(), INT_MAX);
 
-        */
-
-        std::vector<int> v(cost.size() + 1, 0);
-        for (int i = 0; i < cost.size(); ++i) {
-            if (i <= 1) {
-                v[i] = cost[i];
+        for (int i = 0; i < cost.size(); ++i)
+        {
+            if (i <= 1)
+            {
+                dp[i] = cost[i];
             }
-            else {
-                v[i] = cost[i] + std::min(v[i - 1], v[i - 2]);
+            else
+            {
+                dp[i] = cost[i] + min(dp[i - 1], dp[i - 2]);
             }
         }
 
-        return std::min(v[cost.size() - 1], v[cost.size() - 2]);
+        return min(dp[cost.size() - 1], dp[cost.size() - 2]);
     }
 };
 // @lc code=end

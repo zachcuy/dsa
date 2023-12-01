@@ -58,48 +58,72 @@
 
 /*
 
-since we know that we can definitely get to the end,
+DP problem, since we're trying to minimize something
 
-we can take the greedy approach and go to the cell that provides the FARTHEST index
+we can always reach the end
 
-so if we have
+0 1 2 3 4
 2 3 1 1 4
 
-at 0, we can go to [1] or [2] which is 3 or 1
-3 means we can go to [1] + 3 = [4]
-1 means we can go to [2] + 1 = [3]
+base case: reached nums.size() - 1
 
-so choose the bigger one
 
-if we ever find a value that already meets the end, then we can return current step + 1
 
 */
 
-// @lc code=start
 #include "includes.h"
-
+// @lc code=start
 class Solution
 {
-public:
-    int jump(vector<int> &nums)
+   public:
+    int jump(vector<int>& nums)
     {
+        unordered_set<int> s;
+        s.insert(0);
+        queue<int> q;
+        q.push(0);
+
         int count = 0;
-
-        int maxDistance = 0;
-        int i = 0;
-
-        while (i <= maxDistance)
+        while (q.size())
         {
-            int cur = nums[i];
+            int len = q.size();
+
+            for (size_t i = 0; i < len; i++)
+            {
+                int cur = q.front();
+                q.pop();
+
+                if (cur >= nums.size() - 1)
+                {
+                    return count;
+                }
+
+                for (size_t j = 1; j <= nums[cur]; j++)
+                {
+                    if (!s.count(cur + j))
+                    {
+                        s.insert(cur + j);
+                        q.push(cur + j);
+                    }
+                }
+            }
+            count++;
         }
 
-        return 0;
+        return -1;
     }
 };
 // @lc code=end
 
 int main()
 {
+    Solution obj;
+
+    vector<int> v1{2, 3, 1, 1, 4};
+    vector<int> v2{2, 3, 0, 1, 4};
+
+    cout << obj.jump(v1) << "\n";
+    cout << obj.jump(v2) << "\n";
 
     return 0;
 }

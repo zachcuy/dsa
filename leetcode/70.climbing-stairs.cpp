@@ -49,23 +49,51 @@
  *
  */
 
-// 8 5 3 2 1 1
 #include "includes.h"
 // @lc code=start
-class Solution {
+class Solution
+{
    public:
+    // AC
+    // int climbStairs(int n)
+    // {
+    //     if (n <= 2)
+    //     {
+    //         return n;
+    //     }
+
+    //     int a = 1;
+    //     int b = 1;
+    //     for (int i = 2; i <= n; ++i)
+    //     {
+    //         int tmp = a + b;
+    //         a = b;
+    //         b = tmp;
+    //     }
+
+    //     return b;
+    // }
+
+    // Revisited
     int climbStairs(int n)
     {
-        if (n <= 2) {
+        // first step: can get there in 1 way
+        // second step: can get there in 1 way
+        // third step: can get there 1 + 1 = 2 ways
+        // fourth step: can get there in 1 + 2 = 3 ways
+
+        if (n <= 2)
+        {
             return n;
         }
 
-        int a = 1;
-        int b = 1;
-        for (int i = 2; i <= n; ++i) {
-            int tmp = a + b;
+        int a = 1;  // 1
+        int b = 2;  // 2
+        for (int i = 2; i < n; ++i)
+        {
+            int next = a + b;
             a = b;
-            b = tmp;
+            b = next;
         }
 
         return b;
