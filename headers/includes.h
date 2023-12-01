@@ -94,8 +94,10 @@ TreeNode *build(string serialized)
     istringstream iss(serialized);
     string s;
     vector<int> nums;
-    while (getline(iss, s, ',')) nums.push_back(s == "null" ? -INT_MAX : stoi(s));
-    if (nums.empty()) return nullptr;
+    while (getline(iss, s, ','))
+        nums.push_back(s == "null" ? -INT_MAX : stoi(s));
+    if (nums.empty())
+        return nullptr;
     TreeNode *root = new TreeNode(nums[0]);
     queue<TreeNode *> q;
     q.push(root);
@@ -142,8 +144,10 @@ ListNode *populate(string serialized)
     istringstream iss(serialized);
     string s;
     vector<int> nums;
-    while (getline(iss, s, ',')) nums.push_back(s == "null" ? -1 : stoi(s));
-    if (nums.empty()) return nullptr;
+    while (getline(iss, s, ','))
+        nums.push_back(s == "null" ? -1 : stoi(s));
+    if (nums.empty())
+        return nullptr;
     ListNode *root = new ListNode(nums[0]);
     ListNode *cur = root;
     for (int i = 1; i < nums.size(); ++i)
@@ -165,4 +169,4 @@ void listPrint(ListNode *head)
     std::cout << "\n\n";
 }
 
-#endif  // __INCLUDES_H__
+#endif // __INCLUDES_H__
