@@ -3,6 +3,7 @@
 
 // STL
 #include <algorithm>
+#include <bitset>
 #include <iostream>
 #include <string>
 #include <unordered_map>
