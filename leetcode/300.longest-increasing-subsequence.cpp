@@ -66,14 +66,14 @@ if the vector is empty or the current element is the largest we've seen, then we
 // @lc code=start
 class Solution
 {
-public:
+   public:
     void bs(vector<int> &v, int val)
     {
-        if (val < v[0]) // smallest encountered so far
+        if (val < v[0])  // smallest encountered so far
         {
             v[0] = val;
         }
-        else if (val > v[v.size() - 1]) // largest encountered so far
+        else if (val > v[v.size() - 1])  // largest encountered so far
         {
             v.push_back(val);
         }
@@ -95,7 +95,7 @@ public:
                 }
                 else
                 {
-                    break; // we already have the element in the vec so we do nothing
+                    break;  // we already have the element in the vec so we do nothing
                 }
             }
             if (v[L] > val)
