@@ -14,6 +14,7 @@
                 // "-lsfml-window",
                 // "-lsfml-system",
                 "-I${workspaceFolder}/headers",
+                "-I${workspaceFolder}/headers/cpp-dump",
                 "-I/usr/include",
             ],
             "options": {

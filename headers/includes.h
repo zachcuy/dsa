@@ -9,6 +9,8 @@
 #include <unordered_set>
 #include <vector>
 
+#include "dump.hpp"
+
 // CP MACROS
 #include <bits/stdc++.h>
 using namespace std;
