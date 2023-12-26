@@ -79,11 +79,25 @@ class Solution
         {
             if (i == 2)
             {
-                res[i] = nums[i] + res[i - 2];
+                if (res[i - 2] < 0)
+                {
+                    res[i] = nums[i];
+                }
+                else
+                {
+                    res[i] = nums[i] + res[i - 2];
+                }
             }
             else
             {
-                res[i] = nums[i] + max(res[i - 2], res[i - 3]);
+                if (res[i - 2] < 0 and res[i - 3] < 0)
+                {
+                    res[i] = nums[i];
+                }
+                else
+                {
+                    res[i] = nums[i] + max(res[i - 2], res[i - 3]);
+                }
             }
         }
 
@@ -98,8 +112,10 @@ int main(int argc, char const* argv[])
 
     vector<int> v1{1, 2, 3, 1};
     vector<int> v2{2, 7, 9, 3, 1};
+    vector<int> v3{-20, -30, 2, 7, -30, 3, 1};
 
     cout << obj.rob(v1) << "\n";
     cout << obj.rob(v2) << "\n";
+    cout << obj.rob(v3) << "\n";
     return 0;
 }
