@@ -108,6 +108,7 @@ class Solution
             }
         }
     }
+    // AC
     int lengthOfLIS(vector<int> &nums)
     {
         vector<int> sorted_vec{nums[0]};
