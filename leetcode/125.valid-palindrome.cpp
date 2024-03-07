@@ -8,29 +8,22 @@
 // @lc code=start
 class Solution
 {
-   public:
+public:
     bool isPalindrome(string s)
     {
         int l = 0;
         int r = s.size() - 1;
 
-        while (l < r)
-        {
-            if (!isalnum(s[l]))
-            {
+        while (l < r) {
+            if (!isalnum(s[l])) {
                 l++;
-            }
-            else if (!isalnum(s[r]))
-            {
+            } else if (!isalnum(s[r])) {
                 r--;
-            }
-            else
-            {
+            } else {
                 s[l] = tolower(s[l]);
                 s[r] = tolower(s[r]);
 
-                if (s[l] != s[r])
-                {
+                if (s[l] != s[r]) {
                     return false;
                 }
                 l++;
@@ -43,7 +36,7 @@ class Solution
 };
 // @lc code=end
 
-int main(int argc, char const *argv[])
+int main(int argc, char const* argv[])
 {
     Solution obj;
     return 0;

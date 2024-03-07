@@ -8,20 +8,16 @@
 // @lc code=start
 class Solution
 {
-   public:
+public:
     vector<int> twoSum(vector<int>& nums, int target)
     {
         unordered_map<int, int> m;
-        for (int i = 0; i < nums.size(); ++i)
-        {
+        for (int i = 0; i < nums.size(); ++i) {
             int remainder = target - nums[i];
 
-            if (m.count(remainder))
-            {
+            if (m.count(remainder)) {
                 return {m[remainder], i};
-            }
-            else
-            {
+            } else {
                 m[nums[i]] = i;
             }
         }
