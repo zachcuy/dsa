@@ -32,26 +32,23 @@ void boolPrint(bool x)
 }
 
 // 1D vector print
-template <typename T>
-void vecPrint(std::vector<T> &v)
+template<typename T>
+void vecPrint(std::vector<T>& v)
 {
-    for (auto &el : v)
-    {
+    for (auto& el : v) {
         std::cout << el << " ";
     }
     std::cout << "\n";
 }
 
 // 2D vector print
-template <typename T>
+template<typename T>
 void vecPrint2D(std::vector<std::vector<T>> v)
 {
     std::cout << "[\n";
-    for (size_t i = 0; i < v.size(); i++)
-    {
+    for (size_t i = 0; i < v.size(); i++) {
         std::cout << "[ ";
-        for (size_t j = 0; j < v[i].size(); j++)
-        {
+        for (size_t j = 0; j < v[i].size(); j++) {
             std::cout << v[i][j] << " ";
         }
         std::cout << "]\n";
@@ -60,11 +57,10 @@ void vecPrint2D(std::vector<std::vector<T>> v)
 }
 
 // key:value pair print
-template <typename A, typename B>
-void mapPrint(std::unordered_map<A, B> &m)
+template<typename A, typename B>
+void mapPrint(std::unordered_map<A, B>& m)
 {
-    for (auto &e : m)
-    {
+    for (auto& e : m) {
         std::cout << e.first << " " << e.second << "\n";
     }
     std::cout << "\n";
@@ -75,45 +71,53 @@ void mapPrint(std::unordered_map<A, B> &m)
 struct TreeNode
 {
     int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr)
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode()
+        : val(0)
+        , left(nullptr)
+        , right(nullptr)
     {
     }
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr)
+    TreeNode(int x)
+        : val(x)
+        , left(nullptr)
+        , right(nullptr)
     {
     }
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right)
+    TreeNode(int x, TreeNode* left, TreeNode* right)
+        : val(x)
+        , left(left)
+        , right(right)
     {
     }
 };
 
 // usage: TreeNode* root =
 // build("[7,1,4,6,null,5,3,null,null,null,null,null,2]");
-TreeNode *build(string serialized)
+TreeNode* build(string serialized)
 {
     serialized = serialized.substr(1, serialized.size() - 2);
     istringstream iss(serialized);
     string s;
     vector<int> nums;
-    while (getline(iss, s, ',')) nums.push_back(s == "null" ? -INT_MAX : stoi(s));
-    if (nums.empty()) return nullptr;
-    TreeNode *root = new TreeNode(nums[0]);
-    queue<TreeNode *> q;
+    while (getline(iss, s, ','))
+        nums.push_back(s == "null" ? -INT_MAX : stoi(s));
+    if (nums.empty())
+        return nullptr;
+    TreeNode* root = new TreeNode(nums[0]);
+    queue<TreeNode*> q;
     q.push(root);
     int i = 0;
     int n = nums.size();
-    while (!q.empty())
-    {
+    while (!q.empty()) {
         auto cur = q.front();
         q.pop();
-        if (++i < n && nums[i] != -INT_MAX)
-        {
+        if (++i < n && nums[i] != -INT_MAX) {
             cur->left = new TreeNode(nums[i]);
             q.push(cur->left);
         }
-        if (++i < n && nums[i] != -INT_MAX)
-        {
+        if (++i < n && nums[i] != -INT_MAX) {
             cur->right = new TreeNode(nums[i]);
             q.push(cur->right);
         }
@@ -125,42 +129,48 @@ TreeNode *build(string serialized)
 struct ListNode
 {
     int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr)
+    ListNode* next;
+    ListNode()
+        : val(0)
+        , next(nullptr)
     {
     }
-    ListNode(int x) : val(x), next(nullptr)
+    ListNode(int x)
+        : val(x)
+        , next(nullptr)
     {
     }
-    ListNode(int x, ListNode *next) : val(x), next(next)
+    ListNode(int x, ListNode* next)
+        : val(x)
+        , next(next)
     {
     }
 };
 
 // ListNode* root = populate("[7,1,4,6,null,5,3,null,null,null,null,null,2]");
-ListNode *populate(string serialized)
+ListNode* populate(string serialized)
 {
     serialized = serialized.substr(1, serialized.size() - 2);
     istringstream iss(serialized);
     string s;
     vector<int> nums;
-    while (getline(iss, s, ',')) nums.push_back(s == "null" ? -1 : stoi(s));
-    if (nums.empty()) return nullptr;
-    ListNode *root = new ListNode(nums[0]);
-    ListNode *cur = root;
-    for (int i = 1; i < nums.size(); ++i)
-    {
+    while (getline(iss, s, ','))
+        nums.push_back(s == "null" ? -1 : stoi(s));
+    if (nums.empty())
+        return nullptr;
+    ListNode* root = new ListNode(nums[0]);
+    ListNode* cur  = root;
+    for (int i = 1; i < nums.size(); ++i) {
         cur->next = new ListNode(nums[i]);
-        cur = cur->next;
+        cur       = cur->next;
     }
     return root;
 }
 
 // linked list print
-void listPrint(ListNode *head)
+void listPrint(ListNode* head)
 {
-    while (head)
-    {
+    while (head) {
         std::cout << head->val << " ";
         head = head->next;
     }

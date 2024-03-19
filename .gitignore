@@ -4,3 +4,6 @@ leetcode/out
 out
 leetcode/telecommand_test.cpp
 headers/cpp-dump
+build
+.vscode
+.cache
