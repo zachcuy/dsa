@@ -1,5 +1,9 @@
+# BUILD FILES
+.cache
+build
+
+# OLD FOLDERS/FILES
 neetcode/out
 misc/out
 leetcode/out
 out
-leetcode/telecommand_test.cpp
