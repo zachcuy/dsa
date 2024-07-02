@@ -41,7 +41,6 @@ CPP_DUMP_SET_OPTION_IN_GLOBAL(es_value,
                                       "\e[36m",  // bracket_by_depth[2]: cyan
                                   },
                               }));
-#define dump(x) cpp_dump(x)
 
 // LEETCODE BINARY TREE DEFINITION
 struct TreeNode
