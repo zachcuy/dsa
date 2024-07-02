@@ -6,6 +6,8 @@ project(dsa VERSION 1.0.0 LANGUAGES CXX)
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(BUILD_MODE Debug)
+set(CMAKE_CXX_FLAGS "-Wall")
 
 # Generate compile_commands.json for language servers
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
