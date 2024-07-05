@@ -69,7 +69,7 @@ struct TreeNode
 };
 
 // LEETCODE BINARY TREE BUILDER
-TreeNode* build(string serialized)
+inline TreeNode* buildTree(string serialized)
 {
     // usage:
     // TreeNode* root = build("[7,1,4,6,null,5,3,null,null,null,null,null,2]");
@@ -127,7 +127,7 @@ struct ListNode
     }
 };
 
-ListNode* populate(string serialized)
+inline ListNode* buildList(string serialized)
 {
     // usage:
     // ListNode* root = populate("[7,1,4,6,null,5,3,null,null,null,null,null,2]");
