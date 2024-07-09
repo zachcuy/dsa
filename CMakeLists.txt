@@ -13,7 +13,7 @@ set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Add an executable
-add_executable(dsa src/main.cpp)
+add_executable(dsa main.cpp)
 
 # Include directories
 target_include_directories(dsa PRIVATE include include/dump)
